@@ -1,4 +1,5 @@
 import { getFullYear, getFooterCopy, getLatestNotification } from "./utils.js";
+
 test("testing get full year", () => {
   const year = new Date().getFullYear();
   expect(getFullYear()).toBe(year);

@@ -4,10 +4,9 @@
   "private": true,
   "dependencies": {
     "cra-template": "1.2.0",
-    "jest": "^27.5.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-scripts": "^3.0.1"
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -34,8 +33,12 @@
     ]
   },
   "devDependencies": {
-    "enzyme": "^3.11.0"
+    "@types/enzyme": "^3.10.18",
+    "@types/enzyme-adapter-react-16": "^1.0.9",
+    "@types/jest": "^29.5.14",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.8"
   },
-  "homepage": "https://github.com/MohammedAmer1993/alx-react"
+    "type": "module"
 
 }
