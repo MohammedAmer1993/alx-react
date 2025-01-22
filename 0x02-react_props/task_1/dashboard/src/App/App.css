@@ -1,0 +1,12 @@
+.App {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.App-body {
+  flex: 1;
+}
+.App-body > p {
+  font-size: 2rem;
+}

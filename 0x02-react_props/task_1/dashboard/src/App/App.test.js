@@ -6,7 +6,7 @@ describe("testing app component", () => {
     render(<App />);
     const wrapper = screen.getByTestId("app");
     const header = screen.getByRole("heading", { level: 1 });
-    const img = screen.getByRole("img");
+    const img = screen.getByAltText("the logo");
 
     expect(wrapper).toBeInTheDocument();
     expect(header).toBeInTheDocument();
@@ -15,24 +15,24 @@ describe("testing app component", () => {
 
   it("Notification exist", () => {
     render(<App />);
-    const element = screen.getByText("Notification");
+    const element = screen.getByTestId("Notifications");
     expect(element).toBeInTheDocument();
   });
   it("Header exist", () => {
     render(<App />);
-    const element = screen.getByText("Header");
+    const element = screen.getByTestId("header");
     expect(element).toBeInTheDocument();
   });
 
   it("Login exist", () => {
     render(<App />);
-    const element = screen.getByText("Login");
+    const element = screen.getByTestId("login");
     expect(element).toBeInTheDocument();
   });
 
   it("Footer exist", () => {
     render(<App />);
-    const element = screen.getByText("Footer");
+    const element = screen.getByTestId("footer");
     expect(element).toBeInTheDocument();
   });
 });

@@ -10,7 +10,11 @@ describe("testing footer suite", () => {
 
   it("renders copyright", () => {
     render(<Footer />);
-    const text = screen.getByText("Copyright");
+    const text = screen.getByText((content, element) => {
+      return (
+        content.includes("Copyright") && element.tagName.toLowerCase() === "p"
+      );
+    });
     expect(text).toBeInTheDocument();
   });
 });

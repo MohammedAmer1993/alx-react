@@ -1,0 +1,15 @@
+.App-footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+  height: 6rem;
+  width: 100%;
+  border-top: solid rgb(207, 17, 17) 8px;
+}
+
+.App-footer > p {
+  font-size: 2rem;
+}

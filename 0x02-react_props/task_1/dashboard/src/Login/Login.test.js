@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-node-access */
 import Login from "./Login";
 import { screen, render } from "@testing-library/react";
 
@@ -11,13 +12,13 @@ describe("testing Login suite", () => {
 
   it("render inputs", () => {
     render(<Login />);
-    const inputs = screen.getAllByRole("input");
-    expect(inputs.length).toBe(2);
+    const inputs = document.querySelectorAll("input");
+    expect(inputs).toHaveLength(2);
   });
 
   it("render labels", () => {
     render(<Login />);
-    const labels = screen.getAllByRole("label");
-    expect(labels.length).toBe(2);
+    const labels = document.querySelectorAll("label");
+    expect(labels).toHaveLength(2);
   });
 });
