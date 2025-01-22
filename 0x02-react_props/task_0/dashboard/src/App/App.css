@@ -1,0 +1,78 @@
+.App {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+.App-header {
+  font-family: sans-serif;
+  width: 100%;
+  height: 14rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 3rem;
+  color: rgb(207, 17, 17);
+  font-weight: 900;
+  border-bottom: solid rgb(207, 17, 17) 8px;
+}
+
+.App-header > img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.App-body {
+  flex: 1;
+}
+.App-body > p {
+  font-size: 2rem;
+}
+
+.App-footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  left: 0;
+  height: 6rem;
+  width: 100%;
+  border-top: solid rgb(207, 17, 17) 8px;
+}
+
+.App-footer > p {
+  font-size: 2rem;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  align-items: center;
+  gap: 3rem;
+}
+
+.inputs p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  gap: 1rem;
+  width: 20rem;
+}
+.inputs input {
+  border: 1px solid grey;
+  height: 1.4rem;
+  width: 14rem;
+}
+
+.inputs p button {
+  padding: 8px 32px;
+  background-color: white;
+  border-radius: 8px;
+  border: 0.05px grey solid;
+  color: black;
+  font-size: 1.4rem;
+}
