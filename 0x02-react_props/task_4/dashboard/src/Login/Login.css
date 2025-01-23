@@ -1,0 +1,30 @@
+.inputs {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  align-items: center;
+  gap: 3rem;
+}
+
+.inputs p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  gap: 1rem;
+  width: 20rem;
+}
+.inputs input {
+  border: 1px solid grey;
+  height: 1.4rem;
+  width: 14rem;
+}
+
+.inputs p button {
+  padding: 8px 32px;
+  background-color: white;
+  border-radius: 8px;
+  border: 0.05px grey solid;
+  color: black;
+  font-size: 1.4rem;
+}
