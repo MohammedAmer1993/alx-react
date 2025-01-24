@@ -7,13 +7,15 @@ import PropTypes from "prop-types";
 export default function Notifications({
   displayDrawer = true,
   listNotifications,
+  handleShowDisplayDrawer,
+  handleHideDisplayDrawer,
 }) {
   function markAsRead(id) {
     console.log(`Notification ${id} has been marked as read`);
   }
   return (
     <div className="menuItem">
-      <p>Your notifications</p>
+      <p onClick={handleShowDisplayDrawer}>Your notifications</p>
       {displayDrawer ? (
         <div className="Notifications" data-testid="Notifications">
           <div>
@@ -34,9 +36,7 @@ export default function Notifications({
           <button
             style={{ backgroundColor: "white", border: "none", color: "black" }}
             aria-label="Close"
-            onClick={() => {
-              console.log("Close button has been clicked");
-            }}
+            onClick={handleHideDisplayDrawer}
           >
             <img src={closeIcon} alt="close button" />
           </button>

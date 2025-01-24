@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
@@ -25,6 +25,13 @@ const listNotifications = [
 ];
 
 function App({ isLoggedIn = true, logOut }) {
+  const [displayDrawer, setDisplayDrawer] = useState(false);
+  function handleShowDisplayDrawer() {
+    setDisplayDrawer(true);
+  }
+  function handleHideDisplayDrawer() {
+    setDisplayDrawer(false);
+  }
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.ctrlKey && event.key === "h") {
@@ -46,6 +53,9 @@ function App({ isLoggedIn = true, logOut }) {
         <Notifications
           data-testid="Notifications"
           listNotifications={listNotifications}
+          displayDrawer={displayDrawer}
+          handleHideDisplayDrawer={handleHideDisplayDrawer}
+          handleShowDisplayDrawer={handleShowDisplayDrawer}
         />
       </div>
       <div className="App" data-testid="app">
