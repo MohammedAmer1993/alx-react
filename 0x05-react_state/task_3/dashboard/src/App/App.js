@@ -27,11 +27,19 @@ const listNotifications = [
 function App() {
   const [{ email, password, isLoggedIn }, setLogInData] = useState(user);
   const [displayDrawer, setDisplayDrawer] = useState(false);
+  const [listNot, setListNot] = useState(
+    listNotifications.map((item) => ({ ...item }))
+  );
 
   const logOut = useCallback(() => {
     setLogInData({ user: "", password: "", isLoggedIn: false });
   }, []);
 
+  function markNotificationAsRead(id) {
+    setListNot((prev) => {
+      return prev.filter((item) => item.id !== id);
+    });
+  }
   function logIn(email, password) {
     setLogInData({ email, password, isLoggedIn: true });
   }
@@ -59,7 +67,8 @@ function App() {
     <>
       <AppContext.Provider value={{ email, password, isLoggedIn, logOut }}>
         <Header
-          listNotifications={listNotifications}
+          markNotificationAsRead={markNotificationAsRead}
+          listNotifications={listNot}
           displayDrawer={displayDrawer}
           handleHideDisplayDrawer={handleHideDisplayDrawer}
           handleShowDisplayDrawer={handleShowDisplayDrawer}

@@ -13,3 +13,8 @@
 .App-footer > p {
   font-size: 2rem;
 }
+
+.App-footer + p {
+  margin: auto;
+  font-size: 2rem;
+}

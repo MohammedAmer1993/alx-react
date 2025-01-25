@@ -8,6 +8,7 @@ export default function Header({
   displayDrawer,
   handleHideDisplayDrawer,
   handleShowDisplayDrawer,
+  markNotificationAsRead,
 }) {
   const { email, logOut } = useContext(AppContext);
   return (
@@ -26,6 +27,7 @@ export default function Header({
           displayDrawer={displayDrawer}
           handleHideDisplayDrawer={handleHideDisplayDrawer}
           handleShowDisplayDrawer={handleShowDisplayDrawer}
+          markNotificationAsRead={markNotificationAsRead}
         />
       </div>
     </>

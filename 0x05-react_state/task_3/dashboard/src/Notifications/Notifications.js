@@ -9,9 +9,10 @@ export default function Notifications({
   listNotifications,
   handleShowDisplayDrawer,
   handleHideDisplayDrawer,
+  markNotificationAsRead,
 }) {
   function markAsRead(id) {
-    console.log(`Notification ${id} has been marked as read`);
+    markNotificationAsRead(id);
   }
   return (
     <div className="menuItem">
