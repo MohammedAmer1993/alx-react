@@ -1,8 +1,7 @@
 import "./Login.css";
 import { useState } from "react";
 
-export default function Login() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+export default function Login({ logIn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [enableSubmit, setEnableSubmit] = useState({
@@ -27,7 +26,7 @@ export default function Login() {
     setPassword(event.target.value);
   }
   function handleLoginSubmit() {
-    setIsLoggedIn(true);
+    logIn(email, password);
   }
   return (
     <>

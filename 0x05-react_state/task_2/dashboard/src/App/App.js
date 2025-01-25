@@ -1,12 +1,12 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
 import CourseList from "../CourseList/CourseList";
-import Notifications from "../Notifications/Notifications";
 import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
 import BodySection from "../BodySection/BodySection";
+import { AppContext, user } from "./AppContext";
 
 const listCourses = [
   { id: 1, name: "ES6", credit: 60 },
@@ -24,8 +24,17 @@ const listNotifications = [
   },
 ];
 
-function App({ isLoggedIn = false, logOut }) {
+function App() {
+  const [{ email, password, isLoggedIn }, setLogInData] = useState(user);
   const [displayDrawer, setDisplayDrawer] = useState(false);
+
+  const logOut = useCallback(() => {
+    setLogInData({ user: "", password: "", isLoggedIn: false });
+  }, []);
+
+  function logIn(email, password) {
+    setLogInData({ email, password, isLoggedIn: true });
+  }
   function handleShowDisplayDrawer() {
     setDisplayDrawer(true);
   }
@@ -36,7 +45,7 @@ function App({ isLoggedIn = false, logOut }) {
     const handleKeyDown = (event) => {
       if (event.ctrlKey && event.key === "h") {
         alert("Logging you out");
-        logOut();
+        logOut(user);
       }
     };
 
@@ -48,34 +57,33 @@ function App({ isLoggedIn = false, logOut }) {
   }, [logOut]);
   return (
     <>
-      <div className="header-container">
-        <Header />
-        <Notifications
-          data-testid="Notifications"
+      <AppContext.Provider value={{ email, password, isLoggedIn, logOut }}>
+        <Header
           listNotifications={listNotifications}
           displayDrawer={displayDrawer}
           handleHideDisplayDrawer={handleHideDisplayDrawer}
           handleShowDisplayDrawer={handleShowDisplayDrawer}
         />
-      </div>
-      <div className="App" data-testid="app">
-        <div className="App-body" data-testid="body">
-          {isLoggedIn ? (
-            <BodySectionWithMarginBottom title="Course list">
-              {" "}
-              <CourseList listCourses={listCourses} />{" "}
-            </BodySectionWithMarginBottom>
-          ) : (
-            <BodySectionWithMarginBottom title="Log in to continue">
-              <Login />
-            </BodySectionWithMarginBottom>
-          )}
-          <BodySection title="News from the School">
-            some test herer for nothing I will chang it later
-          </BodySection>
+
+        <div className="App" data-testid="app">
+          <div className="App-body" data-testid="body">
+            {isLoggedIn ? (
+              <BodySectionWithMarginBottom title="Course list">
+                {" "}
+                <CourseList listCourses={listCourses} />{" "}
+              </BodySectionWithMarginBottom>
+            ) : (
+              <BodySectionWithMarginBottom title="Log in to continue">
+                <Login logIn={logIn} />
+              </BodySectionWithMarginBottom>
+            )}
+            <BodySection title="News from the School">
+              some test herer for nothing I will chang it later
+            </BodySection>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </AppContext.Provider>
     </>
   );
 }

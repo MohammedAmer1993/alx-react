@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
@@ -7,6 +7,7 @@ import CourseList from "../CourseList/CourseList";
 import Notifications from "../Notifications/Notifications";
 import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
 import BodySection from "../BodySection/BodySection";
+import { AppContext, user, logOut as logoutfunc } from "./AppContext";
 
 const listCourses = [
   { id: 1, name: "ES6", credit: 60 },
@@ -24,8 +25,27 @@ const listNotifications = [
   },
 ];
 
-function App({ isLoggedIn = false, logOut }) {
+function App() {
+  const [{ email, password, isLoggedIn, logOut }, setLogInData] = useState({
+    user: user,
+    logOut: logoutfunc,
+  });
+  useContext(AppContext);
   const [displayDrawer, setDisplayDrawer] = useState(false);
+
+  function logIn(email, password) {
+    setLogInData((prev) => {
+      return {
+        ...prev,
+        user: {
+          ...prev.user,
+          user: email,
+          password: password,
+          isLoggedIn: true,
+        },
+      };
+    });
+  }
   function handleShowDisplayDrawer() {
     setDisplayDrawer(true);
   }
