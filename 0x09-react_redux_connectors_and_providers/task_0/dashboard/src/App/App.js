@@ -7,7 +7,6 @@ import CourseList from "../CourseList/CourseList";
 import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
 import BodySection from "../BodySection/BodySection";
 import { AppContext, user } from "./AppContext";
-import { connect } from "react-redux";
 
 const listCourses = [
   { id: 1, name: "ES6", credit: 60 },
@@ -25,13 +24,13 @@ const listNotifications = [
   },
 ];
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.ui.isUserLoggedIn, // Mapping state to props
   };
 };
 
-export const connet = connect(mapStateToProps)(App);
+// export const connet = connect(mapStateToProps)(App);
 
 function App() {
   const [{ email, password, isLoggedIn }, setLogInData] = useState(user);

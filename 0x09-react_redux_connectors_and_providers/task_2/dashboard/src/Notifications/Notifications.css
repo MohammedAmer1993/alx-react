@@ -1,0 +1,13 @@
+.Notifications {
+  border: dashed 0.1rem red;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.Notifications > button > img {
+  width: 32px;
+  height: 32px;
+}
